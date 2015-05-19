@@ -1,5 +1,8 @@
 # react-native-progress-hud
-__`react-native-progress-hud`__ is a [React Native](https://facebook.github.io/react-native/) port of the popular [`SVProgressHUD`](https://github.com/TransitApp/SVProgressHUD).  It is a clean and easy-to-use HUD meant to display the progress of an ongoing task.
+__`react-native-progress-hud`__ is a [React Native](https://facebook.github.io/react-native/) port of the popular [`SVProgressHUD`](https://github.com/TransitApp/SVProgressHUD).  It is a clean and easy-to-use HUD meant to display the progress of an ongoing task. 
+
+![progress-hud-screen](https://cloud.githubusercontent.com/assets/1627824/7716370/6b25a4ea-fe5f-11e4-8092-9a6ef9ec0dc9.gif)
+
 
 ## Install
 ```shell
@@ -67,9 +70,9 @@ The following props can be used to modify the HUD's style and/or behaviour:
 
 | Prop | Type | Opt/Required | Default | Note |
 |---|---|---|---|---|
-|__`isVisible`__|_Boolean_|Required||
-|__`isDismissible`__|_Boolean_|Optional|false|When set to true, the HUD is dismissed on user interaction.
-|__`backgroundType`__|_String_|Optional|`dark`|`light`, `dark`, `none`. <br/> Default is `dark`.
+|__`isVisible`__|_Boolean_|Required|`N/A`|
+|__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
+|__`backgroundType`__|_String_|Optional|`dark`|`light`, `dark`, `none`. <br/> Default is `none`.
 
 ## License
 Copyright (c) 2015, Naoufal Kadhom
