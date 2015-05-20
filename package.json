@@ -1,6 +1,6 @@
 {
   "name": "react-native-progress-hud",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A clean and lightweight progress HUD for your React Native app.",
   "main": "index.ios.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "https://github.com/naoufal/react-native-progress-hud.git"
   },
-  "license": "ISC",
   "keywords": [
     "react",
     "native",
@@ -18,10 +17,11 @@
     "hud",
     "popup",
     "loader",
-    "loading"
+    "loading",
+    "react-component"
   ],
   "author": "Naoufal Kadhom <naoufalkadhom@gmail.com> (https://github.com/naoufal)",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/naoufal/react-native-progress-hud/issues"
   },
