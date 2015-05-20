@@ -72,7 +72,7 @@ The following props can be used to modify the HUD's style and/or behaviour:
 |---|---|---|---|---|
 |__`isVisible`__|_Boolean_|Required|`N/A`|
 |__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
-|__`backgroundType`__|_String_|Optional|`dark`|`light`, `dark`, `none`. <br/> Default is `none`.
+|__`backgroundType`__|_String_|Optional|`none`|`light`, `dark`, `none`. <br/> Default is `none`.
 
 ## License
 Copyright (c) 2015, Naoufal Kadhom
