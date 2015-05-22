@@ -72,9 +72,9 @@ The following props can be used to modify the HUD's style and/or behaviour:
 
 | Prop | Type | Opt/Required | Default | Note |
 |---|---|---|---|---|
-|__`isVisible`__|_Boolean_|Required|`N/A`|
+|__`isVisible`__|_Boolean_|Required|`N/A`|Displays the HUD when set to true.
 |__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
-|__`backgroundType`__|_String_|Optional|`none`|`light`, `dark`, `none`. <br/> Default is `none`.
+|__`backgroundType`__|_String_|Optional|`none`|Displays an overlay when set to `light` or `dark`.
 
 ## License
 Copyright (c) 2015, Naoufal Kadhom
