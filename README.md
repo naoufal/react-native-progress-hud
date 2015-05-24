@@ -1,10 +1,9 @@
 # react-native-progress-hud
 [![npm](https://img.shields.io/npm/v/react-native-progress-hud.svg?style=flat-square)](https://www.npmjs.com/package/react-native-progress-hud)
 
-__`react-native-progress-hud`__ is a [React Native](https://facebook.github.io/react-native/) port of the popular [`SVProgressHUD`](https://github.com/TransitApp/SVProgressHUD).  It is a clean and easy-to-use HUD meant to display the progress of an ongoing task. 
+__`react-native-progress-hud`__ is a [React Native](https://facebook.github.io/react-native/) port of the popular [`SVProgressHUD`](https://github.com/TransitApp/SVProgressHUD).  It is a clean and easy-to-use HUD meant to display the progress of an ongoing task.
 
 ![progress-hud-screen](https://cloud.githubusercontent.com/assets/1627824/7716549/94f15754-fe61-11e4-9a59-358d460197f2.gif)
-
 
 ## Install
 ```shell
@@ -26,7 +25,9 @@ var YourComponent = React.createClass({
       <View>
         ...
         <ProgressHUD
-          is_visible={this.state.is_hud_visible}
+          isVisible={this.state.is_hud_visible}
+          isDismissible={true}
+          overlayColor="rgba(0, 0, 0, 0.11)"
         />
       </View>
     );
@@ -38,6 +39,7 @@ You can display the HUD by calling:
 ```js
   this.showProgressHUD();
 ```
+
 ### Dismissing the HUD
 It can be dismissed by calling:
 ```js
@@ -67,6 +69,7 @@ var YourChildComponent = React.createClass({
     );
   }
 ```
+
 ## Props
 The following props can be used to modify the HUD's style and/or behaviour:
 
@@ -74,7 +77,8 @@ The following props can be used to modify the HUD's style and/or behaviour:
 |---|---|---|---|---|
 |__`isVisible`__|_Boolean_|Required|`N/A`|Displays the HUD when set to true.
 |__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
-|__`backgroundType`__|_String_|Optional|`none`|Displays an overlay when set to `light` or `dark`.
+|__`overlayColor`__|_String_|Optional|`rgba(0, 0, 0, 0)`|Sets the color of the overlay.
+|__`color`__|_String_|Optional|`#000`|Sets the color of the spinner.
 
 ## License
 Copyright (c) 2015, Naoufal Kadhom

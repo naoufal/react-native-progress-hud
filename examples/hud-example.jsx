@@ -38,7 +38,7 @@ var HUD = React.createClass({
         >
         <Text style={{
           color: '#fff',
-          fontWeight: 600
+          fontWeight: '600'
         }}>
           Show Progress HUD
         </Text>
@@ -46,7 +46,7 @@ var HUD = React.createClass({
         <ProgressHUD
           isVisible={this.state.is_hud_visible}
           isDismissible={true}
-          backgroundType="dark"
+          overlayColor="rgba(0, 0, 0, 0.11)"
         />
       </View>
     );
