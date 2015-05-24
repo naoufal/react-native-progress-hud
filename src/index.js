@@ -16,19 +16,19 @@ var images = require('./images');
 var SPIN_DURATION = 1000;
 
 var ProgressHUDMixin = {
-  getInitialState: function() {
+  getInitialState() {
     return {
       is_hud_visible: false
     };
   },
 
-  showProgressHUD: function() {
+  showProgressHUD() {
     this.setState({
       is_hud_visible: true
     });
   },
 
-  dismissProgressHUD: function() {
+  dismissProgressHUD() {
     this.setState({
       is_hud_visible: false
     });
@@ -39,7 +39,7 @@ var ProgressHUDMixin = {
     dismissProgressHUD: React.PropTypes.func
   },
 
-  getChildContext: function() {
+  getChildContext() {
     return {
       showProgressHUD: this.showProgressHUD,
       dismissProgressHUD: this.dismissProgressHUD
@@ -59,27 +59,42 @@ var ProgressHUD = React.createClass({
     Mixin: ProgressHUDMixin
   },
 
-  getInitialState: function() {
+  propTypes: {
+    isDismissible: React.PropTypes.bool,
+    isVisible: React.PropTypes.bool.isRequired,
+    color: React.PropTypes.string,
+    overlayColor: React.PropTypes.string
+  },
+
+  getDefaultProps() {
+    return {
+      isDismissible: false,
+      color: '#000',
+      overlayColor: 'rgba(0, 0, 0, 0)'
+    };
+  },
+
+  getInitialState() {
     return {
       rotate_deg: 0
     };
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     // Kick off rotation animation
-    this.rotateSpinner();
+    this._rotateSpinner();
 
     // Set rotation interval
     this.interval - setInterval(() => {
-      this.rotateSpinner();
+      this._rotateSpinner();
     }, SPIN_DURATION);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     clearInterval(this.interval);
   },
 
-  rotateSpinner: function() {
+  _rotateSpinner() {
     this.tweenState('rotate_deg', {
       easing: tweenState.easingTypes.linear,
       duration: SPIN_DURATION,
@@ -87,28 +102,16 @@ var ProgressHUD = React.createClass({
     });
   },
 
-  tick: function() {
-    this.rotateSpinner();
-  },
-
-  clickHandler: function() {
+  _clickHandler() {
     if (this.props.isDismissible) {
       this.context.dismissProgressHUD();
     }
   },
 
-  render: function() {
+  render() {
     // Return early if not visible
     if (!this.props.isVisible) {
       return <View />;
-    }
-
-    // Background color overrides
-    var bg = 'rgba(0, 0, 0, 0)';
-    if (this.props.backgroundType === 'light') {
-      bg = 'rgba(255, 255, 255, 0.25)';
-    } else if (this.props.backgroundType === 'dark') {
-      bg = 'rgba(0, 0, 0, 0.11)';
     }
 
     // Set rotation property value
@@ -121,10 +124,10 @@ var ProgressHUD = React.createClass({
       <TouchableHighlight
         key="ProgressHUD"
         style={[styles.overlay, {
-          backgroundColor: bg
+          backgroundColor: this.props.overlayColor
         }]}
-        onPress={this.clickHandler}
-        underlayColor={bg}
+        onPress={this._clickHandler}
+        underlayColor={this.props.overlayColor}
         activeOpacity={1}
       >
         <View
@@ -134,12 +137,13 @@ var ProgressHUD = React.createClass({
         >
           <Image
             style={[styles.spinner, {
+              backgroundColor: this.props.color,
               transform: [
                 {rotate: deg}
               ]
             }]}
             source={{
-              uri: 'data:image/jpeg;base64,' + images['1x'],
+              uri: 'data:image/png;base64,' + images['1x'],
               isStatic: true
             }}
           >

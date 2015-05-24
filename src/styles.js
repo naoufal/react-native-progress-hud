@@ -28,8 +28,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     width: 50,
     height: 50,
-    borderRadius: 50 / 2,
-
+    borderRadius: 50 / 2
   },
   inner_spinner: {
     width: 42,
