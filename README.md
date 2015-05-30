@@ -1,7 +1,7 @@
 # react-native-progress-hud
 [![npm](https://img.shields.io/npm/v/react-native-progress-hud.svg?style=flat-square)](https://www.npmjs.com/package/react-native-progress-hud)
+[![Travis](https://img.shields.io/travis/naoufal/react-native-progress-hud.svg?style=flat-square)](https://travis-ci.org/naoufal/react-native-progress-hu://travis-ci.org/naoufal/react-native-progress-hud)
 [![Code Climate](https://img.shields.io/codeclimate/github/naoufal/react-native-progress-hud.svg?style=flat-square)](https://codeclimate.com/github/naoufal/react-native-progress-hud)
-
 
 __`react-native-progress-hud`__ is a [React Native](https://facebook.github.io/react-native/) port of the popular [`SVProgressHUD`](https://github.com/TransitApp/SVProgressHUD).  It is a clean and easy-to-use HUD meant to display the progress of an ongoing task.
 
