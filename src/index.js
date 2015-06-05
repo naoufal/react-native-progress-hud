@@ -85,7 +85,7 @@ var ProgressHUD = React.createClass({
     this._rotateSpinner();
 
     // Set rotation interval
-    this.interval - setInterval(() => {
+    this.interval = setInterval(() => {
       this._rotateSpinner();
     }, SPIN_DURATION);
   },
