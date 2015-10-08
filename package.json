@@ -1,6 +1,6 @@
 {
   "name": "react-native-progress-hud",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A clean and lightweight progress HUD for your React Native app.",
   "main": "index.ios.js",
   "scripts": {
