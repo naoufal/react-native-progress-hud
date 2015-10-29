@@ -1,0 +1,4 @@
+{
+  "optional": ["runtime"],
+  "ignore": ["**/__mocks__/*.js", "**/__tests__/*.js"]
+}
