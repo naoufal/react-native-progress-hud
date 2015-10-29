@@ -3,6 +3,8 @@
 var React = require('react-native');
 var tweenState = require('react-tween-state');
 
+var ProgressHUDWrapper = require('./ProgressHUDWrapper');
+
 var {
   Image,
   StyleSheet,
@@ -56,7 +58,8 @@ var ProgressHUD = React.createClass({
   },
 
   statics: {
-    Mixin: ProgressHUDMixin
+    Mixin: ProgressHUDMixin,
+    ProgressHUDWrapper: ProgressHUDWrapper
   },
 
   propTypes: {
