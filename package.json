@@ -4,6 +4,10 @@
   "description": "A clean and lightweight progress HUD for your React Native app.",
   "main": "index.ios.js",
   "scripts": {
+    "build": "babel --optional runtime src --out-dir dist",
+    "build:watch": "babel --optional runtime src --watch --out-dir dist",
+    "publish": "rm -rf dist && npm run build",
+    "start": "npm run build:watch",
     "test": "jest"
   },
   "repository": {
@@ -28,10 +32,13 @@
   },
   "homepage": "https://github.com/naoufal/react-native-progress-hud",
   "dependencies": {
+    "babel-runtime": "5.8.29",
     "react-tween-state": "0.0.5"
   },
   "devDependencies": {
     "babel-core": "5.4.7",
+    "babel-eslint": "4.1.3",
+    "eslint": "1.7.3",
     "jest-cli": "0.4.5",
     "react": "0.13.1"
   },
