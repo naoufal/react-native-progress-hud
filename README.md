@@ -91,7 +91,7 @@ The following props can be used to modify the HUD's style and/or behaviour:
 |__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
 |__`overlayColor`__|_String_|Optional|`rgba(0, 0, 0, 0)`|Sets the color of the overlay.
 |__`color`__|_String_|Optional|`#000`|Sets the color of the spinner.
-|__`iconName`__|_String_|Optional|``|Sets the icon of hud,if set icon, spinner will not be show, only icon.
+|__`iconName`__|_String_|Optional|`optional`|Sets the icon of hud,if set icon, spinner will not be show, only icon.
 |__`iconSize`__|_String_|Optional|48|Sets icon size of hud.
 
 ## License
