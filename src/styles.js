@@ -21,7 +21,8 @@ var styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 16,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#000000',
+    opacity: 0.6
   },
   spinner: {
     alignItems: 'center',
@@ -34,7 +35,11 @@ var styles = StyleSheet.create({
     width: 42,
     height: 42,
     borderRadius: 42 / 2,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#000'
+  },
+  label: {
+    paddingTop: 10,
+    color: '#FFFFFF'
   }
 });
 

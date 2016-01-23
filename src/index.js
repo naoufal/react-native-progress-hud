@@ -2,12 +2,14 @@
 
 var React = require('react-native');
 var tweenState = require('react-tween-state');
+var Icon = require('react-native-vector-icons/FontAwesome');
 
 var {
   Image,
   StyleSheet,
   TouchableHighlight,
-  View
+  View,
+  Text
 } = React;
 
 var styles = require('./styles');
@@ -70,7 +72,8 @@ var ProgressHUD = React.createClass({
     return {
       isDismissible: false,
       color: '#000',
-      overlayColor: 'rgba(0, 0, 0, 0)'
+      overlayColor: 'rgba(0, 0, 0, 0)',
+      iconSize: 48
     };
   },
 
@@ -119,6 +122,34 @@ var ProgressHUD = React.createClass({
       this.getTweeningValue('rotate_deg')
     ).toString() + 'deg';
 
+
+    var labelView;
+    if (this.props.labelText) {
+      labelView = <Text style={styles.label}>{this.props.labelText}</Text>;
+    }
+
+    var iconView;
+    if (this.props.iconName) {
+      iconView = <Icon name={this.props.iconName} size={this.props.iconSize} color="#CACACA"/>;
+    }else{
+      iconView = <Image
+            style={[styles.spinner, {
+              backgroundColor: this.props.color,
+              transform: [
+                {rotate: deg}
+              ]
+            }]}
+            source={{
+              uri: 'data:image/png;base64,' + images['1x'],
+              isStatic: true
+            }}
+          >
+            
+            <View style={styles.inner_spinner}>
+            </View>
+          </Image>;
+    }
+
     return (
       /*jshint ignore:start */
       <TouchableHighlight
@@ -135,21 +166,8 @@ var ProgressHUD = React.createClass({
             left: this.getTweeningValue('left')
           }]}
         >
-          <Image
-            style={[styles.spinner, {
-              backgroundColor: this.props.color,
-              transform: [
-                {rotate: deg}
-              ]
-            }]}
-            source={{
-              uri: 'data:image/png;base64,' + images['1x'],
-              isStatic: true
-            }}
-          >
-            <View style={styles.inner_spinner}>
-            </View>
-          </Image>
+          {iconView}
+          {labelView}
         </View>
       </TouchableHighlight>
       /*jshint ignore:end */
