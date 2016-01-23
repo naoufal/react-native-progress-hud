@@ -10,13 +10,18 @@ Are you using [React](https://facebook.github.io/react/)?  Check out [React Prog
 
 ![progress-hud-screen](https://cloud.githubusercontent.com/assets/1627824/7716549/94f15754-fe61-11e4-9a59-358d460197f2.gif)
 
+## Requirements
+The icons is use [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)/FontAwesomes
+
 ## Install
 ```shell
 npm i --save react-native-progress-hud
 ```
 
+
 ## Usage
 Using the HUD in your app will usually look like this:
+
 ```js
 var ProgressHUD = require('react-native-progress-hud');
 
@@ -32,8 +37,10 @@ var YourComponent = React.createClass({
         <ProgressHUD
           isVisible={this.state.is_hud_visible}
           isDismissible={true}
-          overlayColor="rgba(0, 0, 0, 0.11)"
-        />
+          labelText="Success"
+          iconName="check"
+          iconSize={28}
+          overlayColor="rgba(0, 0, 0, 0.11)"/>
       </View>
     );
   }
@@ -84,6 +91,8 @@ The following props can be used to modify the HUD's style and/or behaviour:
 |__`isDismissible`__|_Boolean_|Optional|`false`|When set to true, the HUD is dismissed on user interaction.
 |__`overlayColor`__|_String_|Optional|`rgba(0, 0, 0, 0)`|Sets the color of the overlay.
 |__`color`__|_String_|Optional|`#000`|Sets the color of the spinner.
+|__`iconName`__|_String_|Optional|``|Sets the icon of hud,if set icon, spinner will not be show, only icon.
+|__`iconSize`__|_String_|Optional|48|Sets icon size of hud.
 
 ## License
 Copyright (c) 2015, [Naoufal Kadhom](http://naoufal.com)
