@@ -1,13 +1,14 @@
 'use strict';
 
 var React = require('react-native');
-var tweenState = require('react-tween-state');
 
 var {
   Image,
   StyleSheet,
   TouchableHighlight,
-  View
+  View,
+  Animated,
+  Easing,
 } = React;
 
 var styles = require('./styles');
@@ -48,7 +49,6 @@ var ProgressHUDMixin = {
 };
 
 var ProgressHUD = React.createClass({
-  mixins: [tweenState.Mixin],
 
   contextTypes: {
     showProgressHUD: React.PropTypes.func.isRequired,
@@ -76,30 +76,27 @@ var ProgressHUD = React.createClass({
 
   getInitialState() {
     return {
-      rotate_deg: 0
+      rotate_deg: new Animated.Value(0),
     };
   },
 
-  componentDidMount() {
-    // Kick off rotation animation
-    this._rotateSpinner();
-
-    // Set rotation interval
-    this.interval = setInterval(() => {
-      this._rotateSpinner();
-    }, SPIN_DURATION);
-  },
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
+  componentDidUpdate: function(prevProps, prevState) {
+    this.props.isVisible!=prevProps.isVisible&&this.props.isVisible&&this._rotateSpinner();
   },
 
   _rotateSpinner() {
-    this.tweenState('rotate_deg', {
-      easing: tweenState.easingTypes.linear,
-      duration: SPIN_DURATION,
-      endValue: this.state.rotate_deg === 0 ? 360 : this.state.rotate_deg + 360
-    });
+
+    if(!this.props.isVisible)return;
+
+    if(this.state.rotate_deg._value===1){
+      this.state.rotate_deg.setValue(0);
+    }
+    
+    Animated.timing(this.state.rotate_deg,{
+      toValue:1,
+      duration:SPIN_DURATION,
+      easing: Easing.linear,
+    }).start(this._rotateSpinner);
   },
 
   _clickHandler() {
@@ -114,11 +111,6 @@ var ProgressHUD = React.createClass({
       return <View />;
     }
 
-    // Set rotation property value
-    var deg = Math.floor(
-      this.getTweeningValue('rotate_deg')
-    ).toString() + 'deg';
-
     return (
       /*jshint ignore:start */
       <TouchableHighlight
@@ -131,25 +123,30 @@ var ProgressHUD = React.createClass({
         activeOpacity={1}
       >
         <View
-          style={[styles.container, {
-            left: this.getTweeningValue('left')
-          }]}
+          style={styles.container}
         >
-          <Image
+          <Animated.View
             style={[styles.spinner, {
-              backgroundColor: this.props.color,
-              transform: [
-                {rotate: deg}
-              ]
-            }]}
-            source={{
-              uri: 'data:image/png;base64,' + images['1x'],
-              isStatic: true
-            }}
-          >
-            <View style={styles.inner_spinner}>
-            </View>
-          </Image>
+                transform: [
+                  {rotate: this.state.rotate_deg.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['0deg', '360deg']
+                })}
+                ]
+              }]}>
+            <Image//Animated.Image have issue in Android
+              style={[styles.spinner, {
+                backgroundColor: this.props.color,
+              }]}
+              source={{
+                uri: 'data:image/png;base64,' + images['1x'],
+                isStatic: true
+              }}
+            >
+              <View style={styles.inner_spinner}>
+              </View>
+            </Image>
+          </Animated.View>
         </View>
       </TouchableHighlight>
       /*jshint ignore:end */
