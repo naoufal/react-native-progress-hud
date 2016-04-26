@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/naoufal/react-native-progress-hud",
   "dependencies": {
+    "react-native-vector-icons": "^1.0.4",
     "react-tween-state": "0.0.5"
   },
   "devDependencies": {
