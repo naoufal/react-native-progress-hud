@@ -1,14 +1,14 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component, } from 'react';
 var tweenState = require('react-tween-state');
 
-var {
+import {
   Image,
   StyleSheet,
   TouchableHighlight,
   View
-} = React;
+} from 'react-native';
 
 var styles = require('./styles');
 var images = require('./images');
@@ -18,31 +18,31 @@ var SPIN_DURATION = 1000;
 var ProgressHUDMixin = {
   getInitialState() {
     return {
-      is_hud_visible: false
+      is_hud_visible: false,
     };
   },
 
   showProgressHUD() {
     this.setState({
-      is_hud_visible: true
+      is_hud_visible: true,
     });
   },
 
   dismissProgressHUD() {
     this.setState({
-      is_hud_visible: false
+      is_hud_visible: false,
     });
   },
 
   childContextTypes: {
     showProgressHUD: React.PropTypes.func,
-    dismissProgressHUD: React.PropTypes.func
+    dismissProgressHUD: React.PropTypes.func,
   },
 
   getChildContext() {
     return {
       showProgressHUD: this.showProgressHUD,
-      dismissProgressHUD: this.dismissProgressHUD
+      dismissProgressHUD: this.dismissProgressHUD,
     };
   },
 };
@@ -52,11 +52,11 @@ var ProgressHUD = React.createClass({
 
   contextTypes: {
     showProgressHUD: React.PropTypes.func.isRequired,
-    dismissProgressHUD: React.PropTypes.func
+    dismissProgressHUD: React.PropTypes.func,
   },
 
   statics: {
-    Mixin: ProgressHUDMixin
+    Mixin: ProgressHUDMixin,
   },
 
   propTypes: {
@@ -98,7 +98,7 @@ var ProgressHUD = React.createClass({
     this.tweenState('rotate_deg', {
       easing: tweenState.easingTypes.linear,
       duration: SPIN_DURATION,
-      endValue: this.state.rotate_deg === 0 ? 360 : this.state.rotate_deg + 360
+      endValue: this.state.rotate_deg === 0 ? 360 : this.state.rotate_deg + 360,
     });
   },
 
@@ -124,7 +124,7 @@ var ProgressHUD = React.createClass({
       <TouchableHighlight
         key="ProgressHUD"
         style={[styles.overlay, {
-          backgroundColor: this.props.overlayColor
+          backgroundColor: this.props.overlayColor,
         }]}
         onPress={this._clickHandler}
         underlayColor={this.props.overlayColor}
@@ -132,19 +132,19 @@ var ProgressHUD = React.createClass({
       >
         <View
           style={[styles.container, {
-            left: this.getTweeningValue('left')
+            left: this.getTweeningValue('left'),
           }]}
         >
           <Image
             style={[styles.spinner, {
               backgroundColor: this.props.color,
               transform: [
-                {rotate: deg}
-              ]
+                { rotate: deg },
+            ],
             }]}
             source={{
               uri: 'data:image/png;base64,' + images['1x'],
-              isStatic: true
+              isStatic: true,
             }}
           >
             <View style={styles.inner_spinner}>
@@ -154,7 +154,7 @@ var ProgressHUD = React.createClass({
       </TouchableHighlight>
       /*jshint ignore:end */
     );
-  }
+  },
 });
 
 
