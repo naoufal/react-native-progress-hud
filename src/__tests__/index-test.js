@@ -42,3 +42,34 @@ describe('Mixin', function() {
   });
 });
 
+describe('HOC', function() {
+  it('should expose a HOC', function() {
+    expect(ProgressHUD.HOC).toBeTruthy();
+  });
+
+  it('should expose a showProgressHUD method', function() {
+    class Component extends React.Component {
+      render() { 
+        const {hudVisible, showProgressHUD, dismissProgressHUD} = this.props
+        return <ProgressHUD isVisible={hudVisible} />; 
+      }
+    }
+    const WrappedComponent = ProgressHUD.HOC(Component)
+    
+    const element = <WrappedComponent />
+    expect(TestUtils.isElement(element)).toBe(true)
+    
+    var renderer = TestUtils.createRenderer();
+    renderer.render(element);
+    const result = renderer.getRenderOutput();
+    
+    expect(result.props.showProgressHUD).toBeTruthy();
+    expect(result.props.dismissProgressHUD).toBeTruthy();
+    expect(result.props.hudVisible).toEqual(false);
+    
+    result.props.showProgressHUD()
+    const result2 = renderer.getRenderOutput();
+    expect(result2.props.hudVisible).toEqual(true);
+  });
+  
+});

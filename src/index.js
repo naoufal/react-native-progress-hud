@@ -47,6 +47,18 @@ var ProgressHUDMixin = {
   },
 };
 
+var ProgressHUDHOC = (Component) => React.createClass({
+  mixins: [ProgressHUD.Mixin],
+  render() {
+    return (
+      <Component {...this.props}
+        hudVisible={this.state.is_hud_visible}
+        showProgressHUD={this.showProgressHUD}
+        dismissProgressHUD={this.dismissProgressHUD} />
+    );
+  },
+});
+
 var ProgressHUD = React.createClass({
   mixins: [tweenState.Mixin],
 
@@ -57,6 +69,7 @@ var ProgressHUD = React.createClass({
 
   statics: {
     Mixin: ProgressHUDMixin,
+    HOC: ProgressHUDHOC,
   },
 
   propTypes: {
