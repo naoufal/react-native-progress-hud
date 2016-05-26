@@ -16,6 +16,49 @@ npm i --save react-native-progress-hud
 ```
 
 ## Usage
+
+### Stateless Components
+
+```jsx
+import ProgressHUD from 'react-native-progress-hud'
+
+const MyScreen = ({hudVisible, showProgressHUD, dismissProgressHUD} ) => (
+  <View>
+    <Button onPress={showProgressHUD}>Show</Button>
+    <Button onPress={dismissProgressHUD}>Dismiss</Button>
+    <ProgressHUD isVisible={hudVisible} isDismissble />
+  </View>
+)
+
+const MyScreenContainer = ProgressHUD.HOC(MyScreen)
+
+export default MyScreenContainer
+
+```
+
+### ES6 Classes w/ decorator
+
+```jsx
+import ProgressHUD from 'react-native-progress-hud'
+
+@ProgressHUD.HOC
+class MyScreen extends React.Component {
+  render() {
+    const {hudVisible, showProgressHUD, dismissProgressHUD} = this.props
+    return (
+      <View>
+        <Button onPress={showProgressHUD}>Show</Button>
+        <Button onPress={dismissProgressHUD}>Dismiss</Button>
+        <ProgressHUD isVisible={hudVisible} isDismissble />
+      </View>
+    )
+  }
+}
+```
+
+
+### React.createClass
+
 Using the HUD in your app will usually look like this:
 ```js
 var ProgressHUD = require('react-native-progress-hud');
