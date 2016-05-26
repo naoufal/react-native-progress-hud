@@ -63,7 +63,7 @@ var ProgressHUD = React.createClass({
   mixins: [tweenState.Mixin],
 
   contextTypes: {
-    showProgressHUD: React.PropTypes.func.isRequired,
+    showProgressHUD: React.PropTypes.func,
     dismissProgressHUD: React.PropTypes.func,
   },
 
@@ -116,7 +116,7 @@ var ProgressHUD = React.createClass({
   },
 
   _clickHandler() {
-    if (this.props.isDismissible) {
+    if (this.props.isDismissible && this.context.dismissProgressHUD) {
       this.context.dismissProgressHUD();
     }
   },
