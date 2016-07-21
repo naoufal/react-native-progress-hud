@@ -1,6 +1,7 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component, PropTypes } from 'react';
+import ReactNative from 'react-native';
 var tweenState = require('react-tween-state');
 
 var {
@@ -8,7 +9,7 @@ var {
   StyleSheet,
   TouchableHighlight,
   View
-} = React;
+} = require('react-native');
 
 var styles = require('./styles');
 var images = require('./images');
